@@ -432,22 +432,27 @@ def get_glossaries(client, domain_id, project_id=None):
 # ---------------------------------------------------------------------------
 
 def list_subscriptions(client, domain_id, owning_project_id=None,
-                       listing_id=None):
+                       listing_id=None, subscriber_project_id=None):
     """
     List subscriptions with optional filters.
 
-    owning_project_id – project that owns (provides) the listed asset/product
-    listing_id        – narrow to a specific listing (asset or data product)
-
-    Note: the API has no subscriber-project filter; subscriberProjectId is not
-    a valid parameter.
+    owning_project_id      – project that owns (provides) the listed asset/product
+    listing_id             – narrow to a specific listing (asset or data product)
+    subscriber_project_id  – post-filter: keep only subscriptions where the
+                             subscribedPrincipal is this project (API has no
+                             native subscriber-project filter)
     """
     kwargs = dict(domainIdentifier=domain_id)
     if owning_project_id:
         kwargs["owningProjectId"] = owning_project_id
     if listing_id:
         kwargs["subscribedListingId"] = listing_id
-    return all_pages(client.list_subscriptions, "items", **kwargs)
+    items = all_pages(client.list_subscriptions, "items", **kwargs)
+    if subscriber_project_id:
+        items = [s for s in items
+                 if s.get("subscribedPrincipal", {}).get("project", {}).get("id")
+                 == subscriber_project_id]
+    return items
 
 
 def get_subscription(client, domain_id, subscription_id):
@@ -457,14 +462,19 @@ def get_subscription(client, domain_id, subscription_id):
 
 
 def list_subscription_requests(client, domain_id, owning_project_id=None,
-                                listing_id=None):
+                                listing_id=None, subscriber_project_id=None):
     # Note: no subscriber-project filter in this API; subscriberProjectId is invalid.
     kwargs = dict(domainIdentifier=domain_id)
     if owning_project_id:
         kwargs["owningProjectId"] = owning_project_id
     if listing_id:
         kwargs["subscribedListingId"] = listing_id
-    return all_pages(client.list_subscription_requests, "items", **kwargs)
+    items = all_pages(client.list_subscription_requests, "items", **kwargs)
+    if subscriber_project_id:
+        items = [r for r in items
+                 if r.get("subscribedPrincipal", {}).get("project", {}).get("id")
+                 == subscriber_project_id]
+    return items
 
 
 def get_subscription_request_details(client, domain_id, request_id):
@@ -474,10 +484,11 @@ def get_subscription_request_details(client, domain_id, request_id):
 
 
 def get_subscriptions(client, domain_id, owning_project_id=None,
-                      listing_id=None):
+                      listing_id=None, subscriber_project_id=None):
     subs = list_subscriptions(client, domain_id,
                               owning_project_id=owning_project_id,
-                              listing_id=listing_id)
+                              listing_id=listing_id,
+                              subscriber_project_id=subscriber_project_id)
     result = []
     for s in subs:
         detail = get_subscription(client, domain_id, s["id"])
@@ -486,10 +497,11 @@ def get_subscriptions(client, domain_id, owning_project_id=None,
 
 
 def get_subscription_requests(client, domain_id, owning_project_id=None,
-                               listing_id=None):
+                               listing_id=None, subscriber_project_id=None):
     requests = list_subscription_requests(client, domain_id,
                                           owning_project_id=owning_project_id,
-                                          listing_id=listing_id)
+                                          listing_id=listing_id,
+                                          subscriber_project_id=subscriber_project_id)
     result = []
     for r in requests:
         detail = get_subscription_request_details(client, domain_id, r["id"])
@@ -608,9 +620,15 @@ def extract_project(client, domain_id, project_id):
                                                        owning_project_id=project_id),
     }
 
-    # The API has no subscriber-project filter, so subscriptions_as_subscriber
-    # cannot be scoped per project at the API level.
-    project["subscriptions_as_subscriber"] = {"_note": "API does not support filtering by subscriber project"}
+    # Project as subscriber: filtered in Python by subscribedPrincipal.project.id
+    # (API has no native subscriber-project filter)
+    log.info("  [%s] subscriptions (as subscriber)", project_id)
+    project["subscriptions_as_subscriber"] = {
+        "subscriptions": get_subscriptions(client, domain_id,
+                                           subscriber_project_id=project_id),
+        "subscription_requests": get_subscription_requests(client, domain_id,
+                                                           subscriber_project_id=project_id),
+    }
 
     return project
 
