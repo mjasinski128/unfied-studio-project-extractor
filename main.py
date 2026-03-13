@@ -178,6 +178,9 @@ def get_asset_types(client, domain_id, project_id=None):
     result = []
     for h in hits:
         item = h.get("assetTypeItem", h)
+        # search_types is domain-wide; filter by owning project when scoping to a project
+        if project_id and item.get("owningProjectId") != project_id:
+            continue
         detail = get_asset_type(client, domain_id,
                                 item["name"], item.get("revision", "1"))
         result.append(detail)
@@ -313,6 +316,17 @@ def get_data_products(client, domain_id, project_id):
     for listing in listings:
         item = listing.get("listingItem", listing)
         listing_id = item.get("listingId") or item.get("id")
+
+        # search_listings is domain-wide; filter by owning project.
+        # The owningProjectId is nested inside the concrete listing type.
+        owning_project = (
+            item.get("owningProjectId")
+            or item.get("assetListingItem", {}).get("owningProjectId")
+            or item.get("dataProductListingItem", {}).get("owningProjectId")
+        )
+        if owning_project and owning_project != project_id:
+            continue
+
         if not listing_id:
             result.append(listing)
             continue
@@ -359,6 +373,9 @@ def get_form_types(client, domain_id, project_id=None):
     result = []
     for h in hits:
         item = h.get("formTypeItem", h)
+        # search_types is domain-wide; filter by owning project when scoping to a project
+        if project_id and item.get("owningProjectId") != project_id:
+            continue
         detail = get_form_type(client, domain_id,
                                item.get("name") or item.get("formTypeIdentifier"),
                                item.get("revision"))
