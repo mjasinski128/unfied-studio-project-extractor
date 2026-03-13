@@ -278,15 +278,23 @@ def get_assets(client, domain_id, project_id):
 # Data Products  (published as Listings)
 # ---------------------------------------------------------------------------
 
-def list_data_products_for_project(client, domain_id, project_id):
+def search_listings(client, domain_id):
     """
-    list_data_products scoped to a project.
-    Unlike search_listings, this API accepts owningProjectIdentifier directly
-    and returns only DATA_PRODUCT entries (no asset listings mixed in).
+    search_listings is domain-wide; there is no project or type filter in the API.
+    Returns all listing items (both assetListingItem and dataProductListingItem).
     """
-    return all_pages(client.list_data_products, "items",
-                     domainIdentifier=domain_id,
-                     owningProjectIdentifier=project_id)
+    kwargs = dict(domainIdentifier=domain_id)
+    items = []
+    while True:
+        response = safe_call(client.search_listings, **kwargs)
+        if "_error" in response:
+            break
+        items.extend(response.get("items", []))
+        token = response.get("nextToken")
+        if not token:
+            break
+        kwargs["nextToken"] = token
+    return items
 
 
 def get_listing(client, domain_id, listing_id):
@@ -303,12 +311,24 @@ def get_data_product(client, domain_id, data_product_id):
 
 def get_data_products(client, domain_id, project_id):
     log.info("  [%s] data products", project_id)
-    items = list_data_products_for_project(client, domain_id, project_id)
+    all_listings = search_listings(client, domain_id)
     result = []
-    for item in items:
-        listing_id = item.get("listingId") or item.get("id")
+    for listing in all_listings:
+        item = listing.get("listingItem", listing)
+
+        # search_listings returns all listing types; keep only data products.
+        dp = item.get("dataProductListingItem")
+        if not dp:
+            continue
+
+        # Filter to this project only.
+        owning_project = dp.get("owningProjectId")
+        if owning_project and owning_project != project_id:
+            continue
+
+        listing_id = dp.get("listingId") or item.get("listingId") or item.get("id")
         if not listing_id:
-            result.append(item)
+            result.append(listing)
             continue
         detail = get_listing(client, domain_id, listing_id)
 
