@@ -1,0 +1,16 @@
+[project]
+name = "unified-studio-extractor"
+version = "0.1.0"
+description = "Amazon DataZone (Unified Studio) full-domain extractor"
+authors = [
+    {name = "Matt"}
+]
+requires-python = "^3.11"
+dependencies = [
+    "boto3 (>=1.42.67,<2.0.0)"
+]
+
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"

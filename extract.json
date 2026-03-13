@@ -1,0 +1,1445 @@
+{
+  "domain": {
+    "id": "dzd-dfk24u2o3gj592",
+    "rootDomainUnitId": "c498lzg8vp57h2",
+    "name": "NGED-dev",
+    "description": "Amazon SageMaker Unified Studio for NGED dev",
+    "singleSignOn": {
+      "type": "IAM_IDC",
+      "userAssignment": "MANUAL",
+      "idcInstanceArn": "arn:aws:sso:::instance/ssoins-6804d6a4d6dcb2b3"
+    },
+    "domainExecutionRole": "arn:aws:iam::016630595874:role/DataZone-ExecutionRole-1801",
+    "arn": "arn:aws:datazone:eu-west-1:016630595874:domain/dzd-dfk24u2o3gj592",
+    "kmsKeyIdentifier": "arn:aws:kms:eu-west-1:016630595874:key/41930220-5a6d-4acc-806e-530bbcc4e17e",
+    "status": "AVAILABLE",
+    "portalUrl": "https://dzd-dfk24u2o3gj592.sagemaker.eu-west-1.on.aws",
+    "createdAt": "2026-01-18T23:23:59.147000+00:00",
+    "lastUpdatedAt": "2026-01-18T23:23:59.263000+00:00",
+    "tags": {
+      "aws:cloudformation:stack-id": "arn:aws:cloudformation:eu-west-1:016630595874:stack/UnifiedStudio18012Stack/6b8d1a40-f4b6-11f0-a11e-02b1634678af",
+      "aws:cloudformation:stack-name": "UnifiedStudio18012Stack",
+      "aws:cloudformation:logical-id": "DataZoneDomainConstructDataZoneA0B245DF"
+    },
+    "domainVersion": "V2",
+    "serviceRole": "arn:aws:iam::016630595874:role/DataZone-DomianServiceRole-1801"
+  },
+  "projects": [
+    {
+      "domainId": "dzd-dfk24u2o3gj592",
+      "id": "d3ujj3wrcybaqe",
+      "name": "My_Project_mmhvs0ol_lh_cons1",
+      "description": "",
+      "projectStatus": "ACTIVE",
+      "createdBy": "641aa274-7e1c-48c4-9635-594a91fdddb8",
+      "createdAt": "2026-03-08T15:02:28.842080+00:00",
+      "lastUpdatedAt": "2026-03-08T15:05:32.923663+00:00",
+      "domainUnitId": "c498lzg8vp57h2",
+      "projectProfileId": "3zc8wtxdtbt506",
+      "userParameters": [
+        {
+          "environmentConfigurationName": "Tooling",
+          "environmentParameters": [
+            {
+              "name": "maxEbsVolumeSize",
+              "value": "100"
+            },
+            {
+              "name": "idleTimeoutInMinutes",
+              "value": "60"
+            },
+            {
+              "name": "enableNetworkIsolation",
+              "value": "true"
+            },
+            {
+              "name": "lifecycleManagement",
+              "value": "ENABLED"
+            },
+            {
+              "name": "enableS3AccessGrantsForTools",
+              "value": "true"
+            },
+            {
+              "name": "isNewGitRepository",
+              "value": ""
+            },
+            {
+              "name": "logGroupRetention",
+              "value": "731"
+            },
+            {
+              "name": "enableAthena",
+              "value": "true"
+            },
+            {
+              "name": "enableProjectRepositoryAutoSync",
+              "value": "false"
+            }
+          ]
+        },
+        {
+          "environmentConfigurationName": "LakehouseCatalog",
+          "environmentParameters": [
+            {
+              "name": "catalogName",
+              "value": "lh_cons1"
+            },
+            {
+              "name": "catalogType",
+              "value": "redshift"
+            },
+            {
+              "name": "catalogDescription",
+              "value": "Default Redshift Managed Storage(RMS) catalog"
+            }
+          ]
+        },
+        {
+          "environmentConfigurationName": "LakeHouseDatabase",
+          "environmentParameters": [
+            {
+              "name": "glueDbName",
+              "value": "glue_db"
+            }
+          ]
+        }
+      ],
+      "environmentDeploymentDetails": {
+        "overallDeploymentStatus": "SUCCESSFUL",
+        "environmentFailureReasons": {}
+      },
+      "data_sources": [
+        {
+          "id": "b12f40sfqrt3iu",
+          "status": "READY",
+          "type": "GLUE",
+          "name": "016630595874-lh_cons1-default-datasource",
+          "domainId": "dzd-dfk24u2o3gj592",
+          "projectId": "d3ujj3wrcybaqe",
+          "connectionId": "3jh7jf7pc2ais6",
+          "configuration": {
+            "glueRunConfiguration": {
+              "accountId": "016630595874",
+              "region": "eu-west-1",
+              "dataAccessRole": "arn:aws:iam::016630595874:role/datazone_usr_role_d3ujj3wrcybaqe_4ta2ix8x864o7q",
+              "relationalFilterConfigurations": [
+                {
+                  "databaseName": "*",
+                  "filterExpressions": [
+                    {
+                      "type": "INCLUDE",
+                      "expression": "*"
+                    }
+                  ]
+                }
+              ],
+              "autoImportDataQualityResult": true,
+              "catalogName": "lh_cons1/*"
+            }
+          },
+          "recommendation": {
+            "enableBusinessNameGeneration": false
+          },
+          "enableSetting": "ENABLED",
+          "publishOnImport": false,
+          "schedule": {
+            "schedule": "cron(5 15 * * ? *)"
+          },
+          "lastRunStatus": "SUCCESS",
+          "lastRunAt": "2026-03-13T15:19:30.252912+00:00",
+          "lastRunAssetCount": 0,
+          "createdAt": "2026-03-08T15:05:19.908107+00:00",
+          "updatedAt": "2026-03-13T15:19:32.958211+00:00",
+          "runs": [
+            {
+              "id": "amqst3gv95fnh2",
+              "dataSourceId": "b12f40sfqrt3iu",
+              "type": "SCHEDULED",
+              "status": "SUCCESS",
+              "runStatisticsForAssets": {
+                "added": 0,
+                "updated": 0,
+                "unchanged": 0,
+                "failed": 0
+              },
+              "createdAt": "2026-03-13T15:19:30.295064+00:00",
+              "updatedAt": "2026-03-13T15:20:19.731455+00:00",
+              "startedAt": "2026-03-13T15:19:30.252912+00:00",
+              "stoppedAt": "2026-03-13T15:19:32.821584+00:00",
+              "lineageSummary": {
+                "importStatus": "SUCCESS"
+              }
+            },
+            {
+              "id": "cgfie9u53ftxue",
+              "dataSourceId": "b12f40sfqrt3iu",
+              "type": "SCHEDULED",
+              "status": "SUCCESS",
+              "runStatisticsForAssets": {
+                "added": 0,
+                "updated": 0,
+                "unchanged": 0,
+                "failed": 0
+              },
+              "createdAt": "2026-03-12T15:19:30.354295+00:00",
+              "updatedAt": "2026-03-12T15:19:56.294058+00:00",
+              "startedAt": "2026-03-12T15:19:30.292090+00:00",
+              "stoppedAt": "2026-03-12T15:19:32.942198+00:00",
+              "lineageSummary": {
+                "importStatus": "SUCCESS"
+              }
+            },
+            {
+              "id": "6u2djalfsbefpy",
+              "dataSourceId": "b12f40sfqrt3iu",
+              "type": "SCHEDULED",
+              "status": "SUCCESS",
+              "runStatisticsForAssets": {
+                "added": 0,
+                "updated": 0,
+                "unchanged": 0,
+                "failed": 0
+              },
+              "createdAt": "2026-03-11T15:19:30.363572+00:00",
+              "updatedAt": "2026-03-11T15:19:42.278293+00:00",
+              "startedAt": "2026-03-11T15:19:30.323486+00:00",
+              "stoppedAt": "2026-03-11T15:19:33.079473+00:00",
+              "lineageSummary": {
+                "importStatus": "SUCCESS"
+              }
+            },
+            {
+              "id": "4yck7hpbextixi",
+              "dataSourceId": "b12f40sfqrt3iu",
+              "type": "SCHEDULED",
+              "status": "SUCCESS",
+              "runStatisticsForAssets": {
+                "added": 0,
+                "updated": 0,
+                "unchanged": 0,
+                "failed": 0
+              },
+              "createdAt": "2026-03-10T15:19:30.400187+00:00",
+              "updatedAt": "2026-03-10T15:55:49.049932+00:00",
+              "startedAt": "2026-03-10T15:19:30.361271+00:00",
+              "stoppedAt": "2026-03-10T15:19:32.831776+00:00",
+              "lineageSummary": {
+                "importStatus": "SUCCESS"
+              }
+            },
+            {
+              "id": "c3otj527eqa4d2",
+              "dataSourceId": "b12f40sfqrt3iu",
+              "type": "SCHEDULED",
+              "status": "SUCCESS",
+              "runStatisticsForAssets": {
+                "added": 0,
+                "updated": 0,
+                "unchanged": 0,
+                "failed": 0
+              },
+              "createdAt": "2026-03-09T15:19:30.313473+00:00",
+              "updatedAt": "2026-03-09T15:19:39.607320+00:00",
+              "startedAt": "2026-03-09T15:19:30.264966+00:00",
+              "stoppedAt": "2026-03-09T15:19:32.716158+00:00",
+              "lineageSummary": {
+                "importStatus": "SUCCESS"
+              }
+            }
+          ]
+        },
+        {
+          "id": "avytq13u8ylvyu",
+          "status": "READY",
+          "type": "GLUE",
+          "name": "016630595874-AwsDataCatalog-glue_db_ahxtb4ldhzrct2-default-datasource",
+          "domainId": "dzd-dfk24u2o3gj592",
+          "projectId": "d3ujj3wrcybaqe",
+          "connectionId": "dlwz77h6f95rpy",
+          "configuration": {
+            "glueRunConfiguration": {
+              "accountId": "016630595874",
+              "region": "eu-west-1",
+              "dataAccessRole": "arn:aws:iam::016630595874:role/datazone_usr_role_d3ujj3wrcybaqe_4ta2ix8x864o7q",
+              "relationalFilterConfigurations": [
+                {
+                  "databaseName": "glue_db_ahxtb4ldhzrct2",
+                  "filterExpressions": [
+                    {
+                      "type": "INCLUDE",
+                      "expression": "*"
+                    }
+                  ]
+                }
+              ],
+              "autoImportDataQualityResult": true,
+              "catalogName": "016630595874"
+            }
+          },
+          "recommendation": {
+            "enableBusinessNameGeneration": false
+          },
+          "enableSetting": "ENABLED",
+          "publishOnImport": false,
+          "schedule": {
+            "schedule": "cron(3 15 * * ? *)"
+          },
+          "lastRunStatus": "SUCCESS",
+          "lastRunAt": "2026-03-13T15:09:49.226436+00:00",
+          "lastRunAssetCount": 0,
+          "createdAt": "2026-03-08T15:03:51.497172+00:00",
+          "updatedAt": "2026-03-13T15:09:50.728769+00:00",
+          "runs": [
+            {
+              "id": "dtasqakicnsyvq",
+              "dataSourceId": "avytq13u8ylvyu",
+              "type": "SCHEDULED",
+              "status": "SUCCESS",
+              "runStatisticsForAssets": {
+                "added": 0,
+                "updated": 0,
+                "unchanged": 0,
+                "failed": 0
+              },
+              "createdAt": "2026-03-13T15:09:49.283497+00:00",
+              "updatedAt": "2026-03-13T15:10:45.242936+00:00",
+              "startedAt": "2026-03-13T15:09:49.226436+00:00",
+              "stoppedAt": "2026-03-13T15:09:50.511342+00:00",
+              "lineageSummary": {
+                "importStatus": "SUCCESS"
+              }
+            },
+            {
+              "id": "5rpdjgd6temxhy",
+              "dataSourceId": "avytq13u8ylvyu",
+              "type": "SCHEDULED",
+              "status": "SUCCESS",
+              "runStatisticsForAssets": {
+                "added": 0,
+                "updated": 0,
+                "unchanged": 0,
+                "failed": 0
+              },
+              "createdAt": "2026-03-12T15:09:49.269417+00:00",
+              "updatedAt": "2026-03-12T15:10:04.150523+00:00",
+              "startedAt": "2026-03-12T15:09:49.199715+00:00",
+              "stoppedAt": "2026-03-12T15:09:50.505658+00:00",
+              "lineageSummary": {
+                "importStatus": "SUCCESS"
+              }
+            },
+            {
+              "id": "3z5a01ponxk106",
+              "dataSourceId": "avytq13u8ylvyu",
+              "type": "SCHEDULED",
+              "status": "SUCCESS",
+              "runStatisticsForAssets": {
+                "added": 0,
+                "updated": 0,
+                "unchanged": 0,
+                "failed": 0
+              },
+              "createdAt": "2026-03-11T15:09:49.245747+00:00",
+              "updatedAt": "2026-03-11T15:10:04.480859+00:00",
+              "startedAt": "2026-03-11T15:09:49.188025+00:00",
+              "stoppedAt": "2026-03-11T15:09:50.562142+00:00",
+              "lineageSummary": {
+                "importStatus": "SUCCESS"
+              }
+            },
+            {
+              "id": "3kg0hymwrpkjo6",
+              "dataSourceId": "avytq13u8ylvyu",
+              "type": "SCHEDULED",
+              "status": "SUCCESS",
+              "runStatisticsForAssets": {
+                "added": 0,
+                "updated": 0,
+                "unchanged": 0,
+                "failed": 0
+              },
+              "createdAt": "2026-03-10T15:09:49.328845+00:00",
+              "updatedAt": "2026-03-10T15:10:03.165874+00:00",
+              "startedAt": "2026-03-10T15:09:49.262744+00:00",
+              "stoppedAt": "2026-03-10T15:09:50.592841+00:00",
+              "lineageSummary": {
+                "importStatus": "SUCCESS"
+              }
+            },
+            {
+              "id": "5guvcpefs6qlue",
+              "dataSourceId": "avytq13u8ylvyu",
+              "type": "SCHEDULED",
+              "status": "SUCCESS",
+              "runStatisticsForAssets": {
+                "added": 0,
+                "updated": 0,
+                "unchanged": 0,
+                "failed": 0
+              },
+              "createdAt": "2026-03-09T15:09:49.275156+00:00",
+              "updatedAt": "2026-03-09T15:10:03.364957+00:00",
+              "startedAt": "2026-03-09T15:09:49.216394+00:00",
+              "stoppedAt": "2026-03-09T15:09:50.448301+00:00",
+              "lineageSummary": {
+                "importStatus": "SUCCESS"
+              }
+            }
+          ]
+        },
+        {
+          "id": "dmhk0fjkvva1ee",
+          "status": "RUNNING",
+          "type": "SAGEMAKER",
+          "name": "Tooling-default-sagemaker-modelpackagegroup-datasource",
+          "domainId": "dzd-dfk24u2o3gj592",
+          "projectId": "d3ujj3wrcybaqe",
+          "connectionId": "3jh7jf7pc2ais6",
+          "configuration": {
+            "sageMakerRunConfiguration": {
+              "trackingAssets": {
+                "SageMakerModelPackageGroupAssetType": []
+              }
+            }
+          },
+          "recommendation": {
+            "enableBusinessNameGeneration": false
+          },
+          "enableSetting": "ENABLED",
+          "publishOnImport": false,
+          "schedule": {
+            "schedule": "cron(3 15 * * ? *)"
+          },
+          "lastRunStatus": "RUNNING",
+          "lastRunAt": "2026-03-13T15:14:46.186830+00:00",
+          "lastRunAssetCount": 0,
+          "createdAt": "2026-03-08T15:03:27.191924+00:00",
+          "updatedAt": "2026-03-13T15:14:46.305970+00:00",
+          "runs": [
+            {
+              "id": "cmu8vpqab8yy3a",
+              "dataSourceId": "dmhk0fjkvva1ee",
+              "type": "SCHEDULED",
+              "status": "RUNNING",
+              "createdAt": "2026-03-13T15:14:46.223050+00:00",
+              "updatedAt": "2026-03-13T15:14:46.223050+00:00",
+              "startedAt": "2026-03-13T15:14:46.186830+00:00"
+            },
+            {
+              "id": "5grjz3k1swbqja",
+              "dataSourceId": "dmhk0fjkvva1ee",
+              "type": "SCHEDULED",
+              "status": "RUNNING",
+              "createdAt": "2026-03-12T15:14:46.376222+00:00",
+              "updatedAt": "2026-03-12T15:14:46.376222+00:00",
+              "startedAt": "2026-03-12T15:14:46.325738+00:00"
+            },
+            {
+              "id": "dictbukir4z7yu",
+              "dataSourceId": "dmhk0fjkvva1ee",
+              "type": "SCHEDULED",
+              "status": "RUNNING",
+              "createdAt": "2026-03-11T15:14:46.243584+00:00",
+              "updatedAt": "2026-03-11T15:14:46.243584+00:00",
+              "startedAt": "2026-03-11T15:14:46.201846+00:00"
+            },
+            {
+              "id": "5pucz1ytl4hqxi",
+              "dataSourceId": "dmhk0fjkvva1ee",
+              "type": "SCHEDULED",
+              "status": "RUNNING",
+              "createdAt": "2026-03-10T15:14:46.222282+00:00",
+              "updatedAt": "2026-03-10T15:14:46.222282+00:00",
+              "startedAt": "2026-03-10T15:14:46.175060+00:00"
+            },
+            {
+              "id": "6eekgb0jyl0y3a",
+              "dataSourceId": "dmhk0fjkvva1ee",
+              "type": "SCHEDULED",
+              "status": "RUNNING",
+              "createdAt": "2026-03-09T15:14:46.275129+00:00",
+              "updatedAt": "2026-03-09T15:14:46.275129+00:00",
+              "startedAt": "2026-03-09T15:14:46.212150+00:00"
+            }
+          ]
+        }
+      ],
+      "asset_types": [],
+      "assets": [],
+      "data_products": [
+        {
+          "assetListing": {
+            "listingId": "c4rohp4dsijp5i",
+            "listingRevision": "2",
+            "name": "mattj_data",
+            "entityId": "4tfcu3s67yccnq",
+            "entityRevision": "1",
+            "entityType": "RedshiftTableAssetType",
+            "createdAt": "2026-03-08T13:35:05.399000+00:00",
+            "listingCreatedBy": "641aa274-7e1c-48c4-9635-594a91fdddb8",
+            "listingUpdatedBy": "641aa274-7e1c-48c4-9635-594a91fdddb8",
+            "glossaryTerms": [],
+            "governedGlossaryTerms": [],
+            "owningProjectId": "b6s0y31ngtn7o6"
+          }
+        }
+      ],
+      "form_types": [],
+      "glossaries": [],
+      "environments": [],
+      "subscriptions_as_provider": {
+        "subscriptions": [],
+        "subscription_requests": [],
+        "subscription_grants": []
+      },
+      "subscriptions_as_subscriber": {
+        "_note": "API does not support filtering by subscriber project"
+      }
+    },
+    {
+      "domainId": "dzd-dfk24u2o3gj592",
+      "id": "b6s0y31ngtn7o6",
+      "name": "My_Project_mmhrs1qv_redshift",
+      "description": "",
+      "projectStatus": "ACTIVE",
+      "createdBy": "641aa274-7e1c-48c4-9635-594a91fdddb8",
+      "createdAt": "2026-03-08T13:10:16.528765+00:00",
+      "lastUpdatedAt": "2026-03-08T13:13:50.149551+00:00",
+      "domainUnitId": "c498lzg8vp57h2",
+      "projectProfileId": "brsitlmpeo7mom",
+      "userParameters": [
+        {
+          "environmentConfigurationName": "Tooling",
+          "environmentParameters": [
+            {
+              "name": "maxEbsVolumeSize",
+              "value": "100"
+            },
+            {
+              "name": "idleTimeoutInMinutes",
+              "value": "60"
+            },
+            {
+              "name": "enableNetworkIsolation",
+              "value": "true"
+            },
+            {
+              "name": "lifecycleManagement",
+              "value": "ENABLED"
+            },
+            {
+              "name": "enableS3AccessGrantsForTools",
+              "value": "true"
+            },
+            {
+              "name": "isNewGitRepository",
+              "value": ""
+            },
+            {
+              "name": "logGroupRetention",
+              "value": "731"
+            },
+            {
+              "name": "enableAthena",
+              "value": "true"
+            },
+            {
+              "name": "enableProjectRepositoryAutoSync",
+              "value": "false"
+            }
+          ]
+        }
+      ],
+      "environmentDeploymentDetails": {
+        "overallDeploymentStatus": "SUCCESSFUL",
+        "environmentFailureReasons": {}
+      },
+      "data_sources": [
+        {
+          "id": "4k67v9kfjvtggm",
+          "status": "READY",
+          "type": "REDSHIFT",
+          "name": "RedshiftServerless-default-redshift-datasource",
+          "domainId": "dzd-dfk24u2o3gj592",
+          "projectId": "b6s0y31ngtn7o6",
+          "connectionId": "63ibss6mqhyx06",
+          "configuration": {
+            "redshiftRunConfiguration": {
+              "accountId": "016630595874",
+              "region": "eu-west-1",
+              "dataAccessRole": "arn:aws:iam::016630595874:role/datazone_usr_role_b6s0y31ngtn7o6_3nsdo27fv1jdw6",
+              "relationalFilterConfigurations": [
+                {
+                  "databaseName": "dev",
+                  "schemaName": "*",
+                  "filterExpressions": [
+                    {
+                      "type": "INCLUDE",
+                      "expression": "*"
+                    }
+                  ]
+                }
+              ],
+              "redshiftStorage": {
+                "redshiftServerlessSource": {
+                  "workgroupName": "redshift-serverless-workgroup-3x356fm9wins7q"
+                }
+              }
+            }
+          },
+          "recommendation": {
+            "enableBusinessNameGeneration": false
+          },
+          "enableSetting": "ENABLED",
+          "publishOnImport": false,
+          "lastRunStatus": "SUCCESS",
+          "lastRunAt": "2026-03-08T13:34:51.467022+00:00",
+          "lastRunAssetCount": 1,
+          "createdAt": "2026-03-08T13:13:24.762327+00:00",
+          "updatedAt": "2026-03-08T13:35:24.662163+00:00",
+          "runs": [
+            {
+              "id": "5hewpey9sdd5zq",
+              "dataSourceId": "4k67v9kfjvtggm",
+              "type": "PRIORITIZED",
+              "status": "SUCCESS",
+              "runStatisticsForAssets": {
+                "added": 1,
+                "updated": 0,
+                "unchanged": 0,
+                "failed": 0
+              },
+              "createdAt": "2026-03-08T13:34:50.237890+00:00",
+              "updatedAt": "2026-03-08T13:35:24.567821+00:00",
+              "startedAt": "2026-03-08T13:34:51.467022+00:00",
+              "stoppedAt": "2026-03-08T13:35:24.550913+00:00"
+            }
+          ]
+        },
+        {
+          "id": "bepwoya30pbcly",
+          "status": "RUNNING",
+          "type": "SAGEMAKER",
+          "name": "Tooling-default-sagemaker-modelpackagegroup-datasource",
+          "domainId": "dzd-dfk24u2o3gj592",
+          "projectId": "b6s0y31ngtn7o6",
+          "connectionId": "6gw346fszgy74m",
+          "configuration": {
+            "sageMakerRunConfiguration": {
+              "trackingAssets": {
+                "SageMakerModelPackageGroupAssetType": []
+              }
+            }
+          },
+          "recommendation": {
+            "enableBusinessNameGeneration": false
+          },
+          "enableSetting": "ENABLED",
+          "publishOnImport": false,
+          "schedule": {
+            "schedule": "cron(11 13 * * ? *)"
+          },
+          "lastRunStatus": "RUNNING",
+          "lastRunAt": "2026-03-13T13:15:42.284453+00:00",
+          "lastRunAssetCount": 0,
+          "createdAt": "2026-03-08T13:11:24.522588+00:00",
+          "updatedAt": "2026-03-13T13:15:42.451033+00:00",
+          "runs": [
+            {
+              "id": "66t30ihmrvnrpy",
+              "dataSourceId": "bepwoya30pbcly",
+              "type": "SCHEDULED",
+              "status": "RUNNING",
+              "createdAt": "2026-03-13T13:15:42.336409+00:00",
+              "updatedAt": "2026-03-13T13:15:42.336409+00:00",
+              "startedAt": "2026-03-13T13:15:42.284453+00:00"
+            },
+            {
+              "id": "aoij4fzll0f992",
+              "dataSourceId": "bepwoya30pbcly",
+              "type": "SCHEDULED",
+              "status": "RUNNING",
+              "createdAt": "2026-03-12T13:15:42.323559+00:00",
+              "updatedAt": "2026-03-12T13:15:42.323559+00:00",
+              "startedAt": "2026-03-12T13:15:42.275690+00:00"
+            },
+            {
+              "id": "68kltrz8md1c7q",
+              "dataSourceId": "bepwoya30pbcly",
+              "type": "SCHEDULED",
+              "status": "RUNNING",
+              "createdAt": "2026-03-11T13:15:42.272488+00:00",
+              "updatedAt": "2026-03-11T13:15:42.272488+00:00",
+              "startedAt": "2026-03-11T13:15:42.220614+00:00"
+            },
+            {
+              "id": "axwktxczyehrme",
+              "dataSourceId": "bepwoya30pbcly",
+              "type": "SCHEDULED",
+              "status": "RUNNING",
+              "createdAt": "2026-03-10T13:15:42.335467+00:00",
+              "updatedAt": "2026-03-10T13:15:42.335467+00:00",
+              "startedAt": "2026-03-10T13:15:42.283968+00:00"
+            },
+            {
+              "id": "3yqdiobfesnlw6",
+              "dataSourceId": "bepwoya30pbcly",
+              "type": "SCHEDULED",
+              "status": "RUNNING",
+              "createdAt": "2026-03-09T13:15:42.248029+00:00",
+              "updatedAt": "2026-03-09T13:15:42.248029+00:00",
+              "startedAt": "2026-03-09T13:15:42.198313+00:00"
+            }
+          ]
+        }
+      ],
+      "asset_types": [],
+      "assets": [],
+      "data_products": [
+        {
+          "assetListing": {
+            "listingId": "c4rohp4dsijp5i",
+            "listingRevision": "2",
+            "name": "mattj_data",
+            "entityId": "4tfcu3s67yccnq",
+            "entityRevision": "1",
+            "entityType": "RedshiftTableAssetType",
+            "createdAt": "2026-03-08T13:35:05.399000+00:00",
+            "listingCreatedBy": "641aa274-7e1c-48c4-9635-594a91fdddb8",
+            "listingUpdatedBy": "641aa274-7e1c-48c4-9635-594a91fdddb8",
+            "glossaryTerms": [],
+            "governedGlossaryTerms": [],
+            "owningProjectId": "b6s0y31ngtn7o6"
+          }
+        }
+      ],
+      "form_types": [],
+      "glossaries": [],
+      "environments": [],
+      "subscriptions_as_provider": {
+        "subscriptions": [],
+        "subscription_requests": [],
+        "subscription_grants": []
+      },
+      "subscriptions_as_subscriber": {
+        "_note": "API does not support filtering by subscriber project"
+      }
+    },
+    {
+      "domainId": "dzd-dfk24u2o3gj592",
+      "id": "59dgqjc875oo46",
+      "name": "My_Project_mmhspuop_redshift_cons1",
+      "description": "",
+      "projectStatus": "ACTIVE",
+      "createdBy": "641aa274-7e1c-48c4-9635-594a91fdddb8",
+      "createdAt": "2026-03-08T13:37:22.005406+00:00",
+      "lastUpdatedAt": "2026-03-08T13:40:26.403153+00:00",
+      "domainUnitId": "c498lzg8vp57h2",
+      "projectProfileId": "brsitlmpeo7mom",
+      "userParameters": [
+        {
+          "environmentConfigurationName": "Tooling",
+          "environmentParameters": [
+            {
+              "name": "maxEbsVolumeSize",
+              "value": "100"
+            },
+            {
+              "name": "idleTimeoutInMinutes",
+              "value": "60"
+            },
+            {
+              "name": "enableNetworkIsolation",
+              "value": "true"
+            },
+            {
+              "name": "lifecycleManagement",
+              "value": "ENABLED"
+            },
+            {
+              "name": "enableS3AccessGrantsForTools",
+              "value": "true"
+            },
+            {
+              "name": "isNewGitRepository",
+              "value": ""
+            },
+            {
+              "name": "logGroupRetention",
+              "value": "731"
+            },
+            {
+              "name": "enableAthena",
+              "value": "true"
+            },
+            {
+              "name": "enableProjectRepositoryAutoSync",
+              "value": "false"
+            }
+          ]
+        }
+      ],
+      "environmentDeploymentDetails": {
+        "overallDeploymentStatus": "SUCCESSFUL",
+        "environmentFailureReasons": {}
+      },
+      "data_sources": [
+        {
+          "id": "3n5wnakjhtt8gm",
+          "status": "READY",
+          "type": "REDSHIFT",
+          "name": "RedshiftServerless-default-redshift-datasource",
+          "domainId": "dzd-dfk24u2o3gj592",
+          "projectId": "59dgqjc875oo46",
+          "connectionId": "5oyutu425er1qu",
+          "configuration": {
+            "redshiftRunConfiguration": {
+              "accountId": "016630595874",
+              "region": "eu-west-1",
+              "dataAccessRole": "arn:aws:iam::016630595874:role/datazone_usr_role_59dgqjc875oo46_5xp18w56kqdjpy",
+              "relationalFilterConfigurations": [
+                {
+                  "databaseName": "dev",
+                  "schemaName": "*",
+                  "filterExpressions": [
+                    {
+                      "type": "INCLUDE",
+                      "expression": "*"
+                    }
+                  ]
+                }
+              ],
+              "redshiftStorage": {
+                "redshiftServerlessSource": {
+                  "workgroupName": "redshift-serverless-workgroup-at2o9bbgwr1kt2"
+                }
+              }
+            }
+          },
+          "recommendation": {
+            "enableBusinessNameGeneration": false
+          },
+          "enableSetting": "ENABLED",
+          "publishOnImport": false,
+          "lastRunAssetCount": 0,
+          "createdAt": "2026-03-08T13:40:01.117601+00:00",
+          "updatedAt": "2026-03-08T13:40:22.910382+00:00",
+          "runs": []
+        },
+        {
+          "id": "5qdz5d6e2eg9li",
+          "status": "RUNNING",
+          "type": "SAGEMAKER",
+          "name": "Tooling-default-sagemaker-modelpackagegroup-datasource",
+          "domainId": "dzd-dfk24u2o3gj592",
+          "projectId": "59dgqjc875oo46",
+          "connectionId": "dmdiymp1ytyety",
+          "configuration": {
+            "sageMakerRunConfiguration": {
+              "trackingAssets": {
+                "SageMakerModelPackageGroupAssetType": []
+              }
+            }
+          },
+          "recommendation": {
+            "enableBusinessNameGeneration": false
+          },
+          "enableSetting": "ENABLED",
+          "publishOnImport": false,
+          "schedule": {
+            "schedule": "cron(38 13 * * ? *)"
+          },
+          "lastRunStatus": "RUNNING",
+          "lastRunAt": "2026-03-13T13:47:57.268037+00:00",
+          "lastRunAssetCount": 0,
+          "createdAt": "2026-03-08T13:38:20.974569+00:00",
+          "updatedAt": "2026-03-13T13:47:57.436233+00:00",
+          "runs": [
+            {
+              "id": "aobw9niy2r89au",
+              "dataSourceId": "5qdz5d6e2eg9li",
+              "type": "SCHEDULED",
+              "status": "RUNNING",
+              "createdAt": "2026-03-13T13:47:57.313341+00:00",
+              "updatedAt": "2026-03-13T13:47:57.313341+00:00",
+              "startedAt": "2026-03-13T13:47:57.268037+00:00"
+            },
+            {
+              "id": "dhc2x4dflx7swm",
+              "dataSourceId": "5qdz5d6e2eg9li",
+              "type": "SCHEDULED",
+              "status": "RUNNING",
+              "createdAt": "2026-03-12T13:47:57.233996+00:00",
+              "updatedAt": "2026-03-12T13:47:57.233996+00:00",
+              "startedAt": "2026-03-12T13:47:57.200371+00:00"
+            },
+            {
+              "id": "69d78m0x3hz0uu",
+              "dataSourceId": "5qdz5d6e2eg9li",
+              "type": "SCHEDULED",
+              "status": "RUNNING",
+              "createdAt": "2026-03-11T13:47:57.296300+00:00",
+              "updatedAt": "2026-03-11T13:47:57.296300+00:00",
+              "startedAt": "2026-03-11T13:47:57.245240+00:00"
+            },
+            {
+              "id": "bc94st4hpixsba",
+              "dataSourceId": "5qdz5d6e2eg9li",
+              "type": "SCHEDULED",
+              "status": "RUNNING",
+              "createdAt": "2026-03-10T13:47:57.311253+00:00",
+              "updatedAt": "2026-03-10T13:47:57.311253+00:00",
+              "startedAt": "2026-03-10T13:47:57.265424+00:00"
+            },
+            {
+              "id": "bnbpdtu8gpdnyu",
+              "dataSourceId": "5qdz5d6e2eg9li",
+              "type": "SCHEDULED",
+              "status": "RUNNING",
+              "createdAt": "2026-03-09T13:47:57.293375+00:00",
+              "updatedAt": "2026-03-09T13:47:57.293375+00:00",
+              "startedAt": "2026-03-09T13:47:57.225338+00:00"
+            }
+          ]
+        }
+      ],
+      "asset_types": [],
+      "assets": [],
+      "data_products": [
+        {
+          "assetListing": {
+            "listingId": "c4rohp4dsijp5i",
+            "listingRevision": "2",
+            "name": "mattj_data",
+            "entityId": "4tfcu3s67yccnq",
+            "entityRevision": "1",
+            "entityType": "RedshiftTableAssetType",
+            "createdAt": "2026-03-08T13:35:05.399000+00:00",
+            "listingCreatedBy": "641aa274-7e1c-48c4-9635-594a91fdddb8",
+            "listingUpdatedBy": "641aa274-7e1c-48c4-9635-594a91fdddb8",
+            "glossaryTerms": [],
+            "governedGlossaryTerms": [],
+            "owningProjectId": "b6s0y31ngtn7o6"
+          }
+        }
+      ],
+      "form_types": [],
+      "glossaries": [],
+      "environments": [],
+      "subscriptions_as_provider": {
+        "subscriptions": [
+          {
+            "id": "61cenqkhm23xjq",
+            "createdBy": "641aa274-7e1c-48c4-9635-594a91fdddb8",
+            "updatedBy": "641aa274-7e1c-48c4-9635-594a91fdddb8",
+            "domainId": "dzd-dfk24u2o3gj592",
+            "status": "APPROVED",
+            "createdAt": "2026-03-08T13:41:00.791000+00:00",
+            "updatedAt": "2026-03-08T13:41:00.791000+00:00",
+            "subscribedPrincipal": {
+              "project": {
+                "id": "59dgqjc875oo46",
+                "name": "My_Project_mmhspuop_redshift_cons1"
+              }
+            },
+            "subscribedListing": {
+              "id": "c4rohp4dsijp5i",
+              "revision": "2",
+              "name": "mattj_data",
+              "item": {
+                "assetListing": {
+                  "entityId": "4tfcu3s67yccnq",
+                  "entityRevision": "1",
+                  "entityType": "RedshiftTableAssetType",
+                  "forms": "{\n  \"DZ_Internal_Basic_Form\" : {\n    \"name\" : \"mattj_data\"\n  },\n  \"DataSourceReferenceForm\" : {\n    \"dataSourceIdentifier\" : {\n      \"DataSourceStatusMetricFormType\" : {\n        \"status\" : \"READY\"\n      },\n      \"RecommendationConfigurationForm\" : {\n        \"enableBusinessNameGeneration\" : false\n      },\n      \"NamedDataZoneBasicForm\" : {\n        \"nameEntryType\" : \"AUTO_ACCEPTED\",\n        \"name\" : \"RedshiftServerless-default-redshift-datasource\"\n      },\n      \"AwsConfigurationForm.region\" : [ \"eu-west-1\" ],\n      \"AwsConfigurationForm.accountId\" : [ \"016630595874\" ],\n      \"RedshiftConfigurationForm\" : {\n        \"accountId\" : \"016630595874\",\n        \"region\" : \"eu-west-1\",\n        \"relationalFilterConfigurations\" : [ {\n          \"filterExpressions\" : [ {\n            \"expression\" : \"*\",\n            \"type\" : \"INCLUDE\"\n          } ],\n          \"databaseName\" : \"dev\",\n          \"schemaName\" : \"*\"\n        } ]\n      },\n      \"DataSourceCommonForm\" : {\n        \"enableSetting\" : \"ENABLED\",\n        \"connectionId\" : {\n          \"owningPrincipalForm\" : {\n            \"id\" : \"b6s0y31ngtn7o6\",\n            \"type\" : \"PROJECT\"\n          },\n          \"amazonmetadata\" : {\n            \"entityVersion\" : \"3\",\n            \"typeVersion\" : \"50\",\n            \"typeName\" : \"MaxdomeConnectionEntityType\",\n            \"entityId\" : \"63ibss6mqhyx06\"\n          },\n          \"maxdomeConnectionForm\" : {\n            \"environmentId\" : \"3x356fm9wins7q\",\n            \"physicalEndpoints\" : [ {\n              \"awsLocation\" : {\n                \"awsRegion\" : \"eu-west-1\",\n                \"awsAccountId\" : \"016630595874\"\n              },\n              \"protocol\" : \"JDBC\",\n              \"port\" : 5439,\n              \"host\" : \"redshift-serverless-workgroup-3x356fm9wins7q.016630595874.eu-west-1.redshift-serverless.amazonaws.com\"\n            } ],\n            \"type\" : \"REDSHIFT\",\n            \"domainId\" : \"dzd-dfk24u2o3gj592\",\n            \"props\" : {\n              \"redshiftProperties\" : {\n                \"databaseName\" : \"dev\",\n                \"port\" : 5439,\n                \"redshiftTempDir\" : \"s3://amazon-sagemaker-016630595874-eu-west-1-002a2830264d/dzd-dfk24u2o3gj592/b6s0y31ngtn7o6/dev/redshift-tmp/\",\n                \"host\" : \"redshift-serverless-workgroup-3x356fm9wins7q.016630595874.eu-west-1.redshift-serverless.amazonaws.com\",\n                \"lineageSync\" : {\n                  \"schedule\" : {\n                    \"schedule\" : \"cron(13 13 * * ? *)\",\n                    \"timezone\" : \"UTC\"\n                  },\n                  \"lineageJobId\" : \"5bkq7mt29mwqvq\",\n                  \"enabled\" : true\n                },\n                \"storage\" : {\n                  \"workgroupName\" : \"redshift-serverless-workgroup-3x356fm9wins7q\"\n                },\n                \"status\" : \"READY\"\n              }\n            }\n          },\n          \"namedDataZoneBasicForm\" : {\n            \"nameEntryType\" : \"ACCEPTED\",\n            \"name\" : \"project.redshift\",\n            \"description\" : \"\"\n          }\n        },\n        \"lastRunId\" : {\n          \"DataSourceRunForm\" : {\n            \"dataSourceConfigurationSnapshot\" : \"{\\\"RedshiftConfigurationForm\\\":{\\\"accountId\\\":\\\"016630595874\\\",\\\"region\\\":\\\"eu-west-1\\\",\\\"relationalFilterConfigurations\\\":[{\\\"filterExpressions\\\":[{\\\"expression\\\":\\\"*\\\",\\\"type\\\":\\\"INCLUDE\\\"}],\\\"databaseName\\\":\\\"dev\\\",\\\"schemaName\\\":\\\"*\\\"}]},\\\"RecommendationConfigurationForm\\\":{\\\"enableBusinessNameGeneration\\\":false}}\",\n            \"dataSourceRunStatusCompositeKey\" : \"4k67v9kfjvtggm:SUCCESS:1772976890237\",\n            \"runStatisticsForAssets\" : {\n              \"added\" : 1,\n              \"unchanged\" : 0,\n              \"failed\" : 0,\n              \"updated\" : 0\n            },\n            \"dataSourceIdAndDate\" : \"4k67v9kfjvtggm:2026-03-08\",\n            \"dataSourceIdCompositeKey\" : \"4k67v9kfjvtggm:1772976890237\",\n            \"startTime\" : \"2026-03-08T13:34:51.467022327Z\",\n            \"stopTime\" : \"2026-03-08T13:35:24.550913460Z\",\n            \"type\" : \"PRIORITIZED\"\n          },\n          \"amazonmetadata\" : {\n            \"entityVersion\" : \"3\",\n            \"typeVersion\" : \"11\",\n            \"typeName\" : \"DataSourceRunEntityType\",\n            \"entityId\" : \"5hewpey9sdd5zq\"\n          },\n          \"DataZoneBasicForm\" : { }\n        },\n        \"type\" : \"REDSHIFT\",\n        \"publishOnImport\" : false\n      },\n      \"amazonmetadata\" : {\n        \"entityVersion\" : \"5\",\n        \"typeVersion\" : \"16\",\n        \"typeName\" : \"RedshiftDataSourceEntityType\",\n        \"entityId\" : \"4k67v9kfjvtggm\"\n      },\n      \"DataSourceInternalForm\" : {\n        \"accountIdAndRegion\" : \"016630595874:eu-west-1\",\n        \"concurrentDataSourceRunCount\" : 0\n      }\n    },\n    \"filterableDataSourceId\" : \"4k67v9kfjvtggm\",\n    \"dataSourceRunId\" : {\n      \"DataSourceRunForm\" : {\n        \"dataSourceConfigurationSnapshot\" : \"{\\\"RedshiftConfigurationForm\\\":{\\\"accountId\\\":\\\"016630595874\\\",\\\"region\\\":\\\"eu-west-1\\\",\\\"relationalFilterConfigurations\\\":[{\\\"filterExpressions\\\":[{\\\"expression\\\":\\\"*\\\",\\\"type\\\":\\\"INCLUDE\\\"}],\\\"databaseName\\\":\\\"dev\\\",\\\"schemaName\\\":\\\"*\\\"}]},\\\"RecommendationConfigurationForm\\\":{\\\"enableBusinessNameGeneration\\\":false}}\",\n        \"dataSourceRunStatusCompositeKey\" : \"4k67v9kfjvtggm:SUCCESS:1772976890237\",\n        \"runStatisticsForAssets\" : {\n          \"added\" : 1,\n          \"unchanged\" : 0,\n          \"failed\" : 0,\n          \"updated\" : 0\n        },\n        \"dataSourceIdAndDate\" : \"4k67v9kfjvtggm:2026-03-08\",\n        \"dataSourceIdCompositeKey\" : \"4k67v9kfjvtggm:1772976890237\",\n        \"startTime\" : \"2026-03-08T13:34:51.467022327Z\",\n        \"stopTime\" : \"2026-03-08T13:35:24.550913460Z\",\n        \"type\" : \"PRIORITIZED\"\n      },\n      \"amazonmetadata\" : {\n        \"entityVersion\" : \"3\",\n        \"typeVersion\" : \"11\",\n        \"typeName\" : \"DataSourceRunEntityType\",\n        \"entityId\" : \"5hewpey9sdd5zq\"\n      },\n      \"DataZoneBasicForm\" : { }\n    },\n    \"dataSourceType\" : \"REDSHIFT\"\n  },\n  \"SubscriptionTermsForm\" : {\n    \"approvalRequired\" : \"YES\"\n  },\n  \"AwsConfigurationForm.region\" : [ \"eu-west-1\" ],\n  \"amazonstatus\" : {\n    \"publishingPrecedence\" : \"PUBLISHED_INDIVIDUALLY\",\n    \"status\" : \"ACTIVE\"\n  },\n  \"AssetCommonDetailsForm\" : {\n    \"sourceIdentifier\" : \"arn:aws:redshift-serverless:eu-west-1:016630595874:table/redshift-serverless-workgroup-3x356fm9wins7q/dev/project/mattj_data\"\n  },\n  \"DZ_Internal_Details_Form\" : {\n    \"sourceIdentifier\" : \"arn:aws:redshift-serverless:eu-west-1:016630595874:table/redshift-serverless-workgroup-3x356fm9wins7q/dev/project/mattj_data\"\n  },\n  \"AwsConfigurationForm.accountId\" : [ \"016630595874\" ],\n  \"RedshiftTableForm\" : {\n    \"accountId\" : \"016630595874\",\n    \"databaseName\" : \"dev\",\n    \"redshiftStorage\" : {\n      \"redshiftServerlessSource\" : {\n        \"workgroupArn\" : \"arn:aws:redshift-serverless:eu-west-1:016630595874:workgroup/340b1bd6-75c8-491b-986a-07434b58472b\",\n        \"namespaceArn\" : \"arn:aws:redshift-serverless:eu-west-1:016630595874:namespace/99f2cbe1-ba03-4b2d-b430-6079f8548648\",\n        \"workgroupName\" : \"redshift-serverless-workgroup-3x356fm9wins7q\",\n        \"namespaceName\" : \"redshift-serverless-namespace-3x356fm9wins7q\"\n      }\n    },\n    \"columns\" : [ {\n      \"dataType\" : \"varchar(256, 0)\",\n      \"columnName\" : \"col1\"\n    }, {\n      \"dataType\" : \"int4(10, 0)\",\n      \"columnName\" : \"col2\"\n    } ],\n    \"storageType\" : \"SERVERLESS\",\n    \"region\" : \"eu-west-1\",\n    \"schemaName\" : \"project\",\n    \"tableName\" : \"mattj_data\"\n  },\n  \"amazonmetadata\" : {\n    \"entityVersion\" : \"1\",\n    \"createdAt\" : \"2026-03-08T13:35:05.399434721Z\",\n    \"typeNamespace\" : \"amazon.datazone\",\n    \"sourceCategory\" : \"asset\",\n    \"typeName\" : \"RedshiftTableAssetType\",\n    \"entityId\" : \"4tfcu3s67yccnq\",\n    \"sourceEntityFormDetails\" : [ {\n      \"typeNamespace\" : \"amazon.datazone\",\n      \"typeVersion\" : \"7\",\n      \"formName\" : \"RedshiftTableForm\",\n      \"typeName\" : \"RedshiftTableFormType\"\n    }, {\n      \"typeNamespace\" : \"amazon.datazone\",\n      \"typeVersion\" : \"4\",\n      \"formName\" : \"DataSourceReferenceForm\",\n      \"typeName\" : \"DataSourceReferenceFormType\"\n    }, {\n      \"typeNamespace\" : \"amazon.datazone\",\n      \"typeVersion\" : \"2\",\n      \"formName\" : \"SubscriptionTermsForm\",\n      \"typeName\" : \"SubscriptionTermsFormType\"\n    }, {\n      \"typeNamespace\" : \"amazon.datazone\",\n      \"typeVersion\" : \"8\",\n      \"formName\" : \"AssetCommonDetailsForm\",\n      \"typeName\" : \"AssetCommonDetailsFormType\"\n    }, {\n      \"typeNamespace\" : \"amazon.datazone\",\n      \"typeVersion\" : \"10\",\n      \"formName\" : \"DZ_Internal_Basic_Form\",\n      \"typeName\" : \"NamedDataZoneBasicFormType\"\n    }, {\n      \"typeNamespace\" : \"amazon.datazone.internal\",\n      \"typeVersion\" : \"4\",\n      \"formName\" : \"DZ_Internal_Details_Form\",\n      \"typeName\" : \"AssetInternalDetailsFormType\"\n    }, {\n      \"typeNamespace\" : \"amazon.datazone.internal\",\n      \"typeVersion\" : \"1\",\n      \"formName\" : \"DZ_Internal_Rendering_Config_Form\",\n      \"typeName\" : \"RenderingConfigFormType\"\n    } ]\n  },\n  \"DZ_Internal_Rendering_Config_Form\" : {\n    \"metadataFormItems\" : [ {\n      \"formName\" : \"RedshiftTableForm\",\n      \"collapse\" : false\n    }, {\n      \"formName\" : \"DataSourceReferenceForm\",\n      \"collapse\" : false\n    }, {\n      \"formName\" : \"SubscriptionTermsForm\",\n      \"collapse\" : false\n    }, {\n      \"formName\" : \"AssetCommonDetailsForm\",\n      \"collapse\" : false\n    } ]\n  }\n}",
+                  "glossaryTerms": []
+                }
+              },
+              "ownerProjectId": "b6s0y31ngtn7o6",
+              "ownerProjectName": "My_Project_mmhrs1qv_redshift"
+            },
+            "subscriptionRequestId": "4zgy4su38lfgk6"
+          }
+        ],
+        "subscription_requests": [],
+        "subscription_grants": []
+      },
+      "subscriptions_as_subscriber": {
+        "_note": "API does not support filtering by subscriber project"
+      }
+    },
+    {
+      "domainId": "dzd-dfk24u2o3gj592",
+      "id": "b0u2egun7n4v86",
+      "name": "My_Project_mmht3obo_lh1",
+      "description": "",
+      "projectStatus": "ACTIVE",
+      "createdBy": "641aa274-7e1c-48c4-9635-594a91fdddb8",
+      "createdAt": "2026-03-08T13:47:30.887633+00:00",
+      "lastUpdatedAt": "2026-03-08T13:50:35.886374+00:00",
+      "domainUnitId": "c498lzg8vp57h2",
+      "projectProfileId": "3zc8wtxdtbt506",
+      "userParameters": [
+        {
+          "environmentConfigurationName": "Tooling",
+          "environmentParameters": [
+            {
+              "name": "maxEbsVolumeSize",
+              "value": "100"
+            },
+            {
+              "name": "idleTimeoutInMinutes",
+              "value": "60"
+            },
+            {
+              "name": "enableNetworkIsolation",
+              "value": "true"
+            },
+            {
+              "name": "lifecycleManagement",
+              "value": "ENABLED"
+            },
+            {
+              "name": "enableS3AccessGrantsForTools",
+              "value": "true"
+            },
+            {
+              "name": "isNewGitRepository",
+              "value": ""
+            },
+            {
+              "name": "logGroupRetention",
+              "value": "731"
+            },
+            {
+              "name": "enableAthena",
+              "value": "true"
+            },
+            {
+              "name": "enableProjectRepositoryAutoSync",
+              "value": "false"
+            }
+          ]
+        },
+        {
+          "environmentConfigurationName": "LakehouseCatalog",
+          "environmentParameters": [
+            {
+              "name": "catalogName",
+              "value": "lh1"
+            },
+            {
+              "name": "catalogType",
+              "value": "redshift"
+            },
+            {
+              "name": "catalogDescription",
+              "value": "Default Redshift Managed Storage(RMS) catalog"
+            }
+          ]
+        },
+        {
+          "environmentConfigurationName": "LakeHouseDatabase",
+          "environmentParameters": [
+            {
+              "name": "glueDbName",
+              "value": "glue_db"
+            }
+          ]
+        }
+      ],
+      "environmentDeploymentDetails": {
+        "overallDeploymentStatus": "SUCCESSFUL",
+        "environmentFailureReasons": {}
+      },
+      "data_sources": [
+        {
+          "id": "bswctdrgtmouja",
+          "status": "READY",
+          "type": "GLUE",
+          "name": "016630595874-lh1-default-datasource",
+          "domainId": "dzd-dfk24u2o3gj592",
+          "projectId": "b0u2egun7n4v86",
+          "connectionId": "645t8bijsvr0ye",
+          "configuration": {
+            "glueRunConfiguration": {
+              "accountId": "016630595874",
+              "region": "eu-west-1",
+              "dataAccessRole": "arn:aws:iam::016630595874:role/datazone_usr_role_b0u2egun7n4v86_3ow8wsu33rjeae",
+              "relationalFilterConfigurations": [
+                {
+                  "databaseName": "*",
+                  "filterExpressions": [
+                    {
+                      "type": "INCLUDE",
+                      "expression": "*"
+                    }
+                  ]
+                }
+              ],
+              "autoImportDataQualityResult": true,
+              "catalogName": "lh1/*"
+            }
+          },
+          "recommendation": {
+            "enableBusinessNameGeneration": false
+          },
+          "enableSetting": "ENABLED",
+          "publishOnImport": false,
+          "schedule": {
+            "schedule": "cron(50 13 * * ? *)"
+          },
+          "lastRunStatus": "SUCCESS",
+          "lastRunAt": "2026-03-13T13:58:21.246584+00:00",
+          "lastRunAssetCount": 0,
+          "createdAt": "2026-03-08T13:50:23.235835+00:00",
+          "updatedAt": "2026-03-13T13:58:23.828969+00:00",
+          "runs": [
+            {
+              "id": "bijt5v6xtjoyza",
+              "dataSourceId": "bswctdrgtmouja",
+              "type": "SCHEDULED",
+              "status": "SUCCESS",
+              "runStatisticsForAssets": {
+                "added": 0,
+                "updated": 0,
+                "unchanged": 0,
+                "failed": 0
+              },
+              "createdAt": "2026-03-13T13:58:21.300624+00:00",
+              "updatedAt": "2026-03-13T13:58:27.137926+00:00",
+              "startedAt": "2026-03-13T13:58:21.246584+00:00",
+              "stoppedAt": "2026-03-13T13:58:23.723920+00:00",
+              "lineageSummary": {
+                "importStatus": "SUCCESS"
+              }
+            },
+            {
+              "id": "518yqzwn2uncie",
+              "dataSourceId": "bswctdrgtmouja",
+              "type": "SCHEDULED",
+              "status": "SUCCESS",
+              "runStatisticsForAssets": {
+                "added": 0,
+                "updated": 0,
+                "unchanged": 0,
+                "failed": 0
+              },
+              "createdAt": "2026-03-12T13:58:21.160066+00:00",
+              "updatedAt": "2026-03-12T13:58:35.119392+00:00",
+              "startedAt": "2026-03-12T13:58:21.123889+00:00",
+              "stoppedAt": "2026-03-12T13:58:23.633540+00:00",
+              "lineageSummary": {
+                "importStatus": "SUCCESS"
+              }
+            },
+            {
+              "id": "ayfpq0pyorbrpy",
+              "dataSourceId": "bswctdrgtmouja",
+              "type": "SCHEDULED",
+              "status": "SUCCESS",
+              "runStatisticsForAssets": {
+                "added": 0,
+                "updated": 0,
+                "unchanged": 0,
+                "failed": 0
+              },
+              "createdAt": "2026-03-11T13:58:21.315988+00:00",
+              "updatedAt": "2026-03-11T13:58:35.523701+00:00",
+              "startedAt": "2026-03-11T13:58:21.246176+00:00",
+              "stoppedAt": "2026-03-11T13:58:23.750048+00:00",
+              "lineageSummary": {
+                "importStatus": "SUCCESS"
+              }
+            },
+            {
+              "id": "5s4pzzussh5x92",
+              "dataSourceId": "bswctdrgtmouja",
+              "type": "SCHEDULED",
+              "status": "SUCCESS",
+              "runStatisticsForAssets": {
+                "added": 0,
+                "updated": 0,
+                "unchanged": 0,
+                "failed": 0
+              },
+              "createdAt": "2026-03-10T13:58:21.187838+00:00",
+              "updatedAt": "2026-03-10T13:58:31.209066+00:00",
+              "startedAt": "2026-03-10T13:58:21.133092+00:00",
+              "stoppedAt": "2026-03-10T13:58:23.488551+00:00",
+              "lineageSummary": {
+                "importStatus": "SUCCESS"
+              }
+            },
+            {
+              "id": "au141t7eim9us6",
+              "dataSourceId": "bswctdrgtmouja",
+              "type": "SCHEDULED",
+              "status": "SUCCESS",
+              "runStatisticsForAssets": {
+                "added": 0,
+                "updated": 0,
+                "unchanged": 0,
+                "failed": 0
+              },
+              "createdAt": "2026-03-09T13:58:21.174750+00:00",
+              "updatedAt": "2026-03-09T13:58:29.524585+00:00",
+              "startedAt": "2026-03-09T13:58:21.131435+00:00",
+              "stoppedAt": "2026-03-09T13:58:23.742518+00:00",
+              "lineageSummary": {
+                "importStatus": "SUCCESS"
+              }
+            }
+          ]
+        },
+        {
+          "id": "dct66li52koqvq",
+          "status": "READY",
+          "type": "GLUE",
+          "name": "016630595874-AwsDataCatalog-glue_db_c67a8qt1o301au-default-datasource",
+          "domainId": "dzd-dfk24u2o3gj592",
+          "projectId": "b0u2egun7n4v86",
+          "connectionId": "6wfxjj4stgxkie",
+          "configuration": {
+            "glueRunConfiguration": {
+              "accountId": "016630595874",
+              "region": "eu-west-1",
+              "dataAccessRole": "arn:aws:iam::016630595874:role/datazone_usr_role_b0u2egun7n4v86_3ow8wsu33rjeae",
+              "relationalFilterConfigurations": [
+                {
+                  "databaseName": "glue_db_c67a8qt1o301au",
+                  "filterExpressions": [
+                    {
+                      "type": "INCLUDE",
+                      "expression": "*"
+                    }
+                  ]
+                }
+              ],
+              "autoImportDataQualityResult": true,
+              "catalogName": "016630595874"
+            }
+          },
+          "recommendation": {
+            "enableBusinessNameGeneration": false
+          },
+          "enableSetting": "ENABLED",
+          "publishOnImport": false,
+          "schedule": {
+            "schedule": "cron(48 13 * * ? *)"
+          },
+          "lastRunStatus": "SUCCESS",
+          "lastRunAt": "2026-03-13T13:51:34.163069+00:00",
+          "lastRunAssetCount": 0,
+          "createdAt": "2026-03-08T13:48:53.403894+00:00",
+          "updatedAt": "2026-03-13T13:51:35.462381+00:00",
+          "runs": [
+            {
+              "id": "3q6wsvzk1vlgk6",
+              "dataSourceId": "dct66li52koqvq",
+              "type": "SCHEDULED",
+              "status": "SUCCESS",
+              "runStatisticsForAssets": {
+                "added": 0,
+                "updated": 0,
+                "unchanged": 0,
+                "failed": 0
+              },
+              "createdAt": "2026-03-13T13:51:34.204230+00:00",
+              "updatedAt": "2026-03-13T13:51:41.551302+00:00",
+              "startedAt": "2026-03-13T13:51:34.163069+00:00",
+              "stoppedAt": "2026-03-13T13:51:35.281914+00:00",
+              "lineageSummary": {
+                "importStatus": "SUCCESS"
+              }
+            },
+            {
+              "id": "cpng609i2pl0nq",
+              "dataSourceId": "dct66li52koqvq",
+              "type": "SCHEDULED",
+              "status": "SUCCESS",
+              "runStatisticsForAssets": {
+                "added": 0,
+                "updated": 0,
+                "unchanged": 0,
+                "failed": 0
+              },
+              "createdAt": "2026-03-12T13:51:34.295194+00:00",
+              "updatedAt": "2026-03-12T13:51:50.731336+00:00",
+              "startedAt": "2026-03-12T13:51:34.249988+00:00",
+              "stoppedAt": "2026-03-12T13:51:35.469556+00:00",
+              "lineageSummary": {
+                "importStatus": "SUCCESS"
+              }
+            },
+            {
+              "id": "dlb9f59rrwp992",
+              "dataSourceId": "dct66li52koqvq",
+              "type": "SCHEDULED",
+              "status": "SUCCESS",
+              "runStatisticsForAssets": {
+                "added": 0,
+                "updated": 0,
+                "unchanged": 0,
+                "failed": 0
+              },
+              "createdAt": "2026-03-11T13:51:34.267559+00:00",
+              "updatedAt": "2026-03-11T13:51:47.214775+00:00",
+              "startedAt": "2026-03-11T13:51:34.217934+00:00",
+              "stoppedAt": "2026-03-11T13:51:35.445736+00:00",
+              "lineageSummary": {
+                "importStatus": "SUCCESS"
+              }
+            },
+            {
+              "id": "caz0ssqxzp9mom",
+              "dataSourceId": "dct66li52koqvq",
+              "type": "SCHEDULED",
+              "status": "SUCCESS",
+              "runStatisticsForAssets": {
+                "added": 0,
+                "updated": 0,
+                "unchanged": 0,
+                "failed": 0
+              },
+              "createdAt": "2026-03-10T13:51:34.321587+00:00",
+              "updatedAt": "2026-03-10T13:51:50.902590+00:00",
+              "startedAt": "2026-03-10T13:51:34.267610+00:00",
+              "stoppedAt": "2026-03-10T13:51:35.509148+00:00",
+              "lineageSummary": {
+                "importStatus": "SUCCESS"
+              }
+            },
+            {
+              "id": "60pny8rym23mae",
+              "dataSourceId": "dct66li52koqvq",
+              "type": "SCHEDULED",
+              "status": "SUCCESS",
+              "runStatisticsForAssets": {
+                "added": 0,
+                "updated": 0,
+                "unchanged": 0,
+                "failed": 0
+              },
+              "createdAt": "2026-03-09T13:51:34.212296+00:00",
+              "updatedAt": "2026-03-09T13:51:42.162283+00:00",
+              "startedAt": "2026-03-09T13:51:34.168390+00:00",
+              "stoppedAt": "2026-03-09T13:51:35.321671+00:00",
+              "lineageSummary": {
+                "importStatus": "SUCCESS"
+              }
+            }
+          ]
+        },
+        {
+          "id": "6gcs0wcmaotk0m",
+          "status": "RUNNING",
+          "type": "SAGEMAKER",
+          "name": "Tooling-default-sagemaker-modelpackagegroup-datasource",
+          "domainId": "dzd-dfk24u2o3gj592",
+          "projectId": "b0u2egun7n4v86",
+          "connectionId": "645t8bijsvr0ye",
+          "configuration": {
+            "sageMakerRunConfiguration": {
+              "trackingAssets": {
+                "SageMakerModelPackageGroupAssetType": []
+              }
+            }
+          },
+          "recommendation": {
+            "enableBusinessNameGeneration": false
+          },
+          "enableSetting": "ENABLED",
+          "publishOnImport": false,
+          "schedule": {
+            "schedule": "cron(48 13 * * ? *)"
+          },
+          "lastRunStatus": "RUNNING",
+          "lastRunAt": "2026-03-13T14:01:25.255977+00:00",
+          "lastRunAssetCount": 0,
+          "createdAt": "2026-03-08T13:48:30.279775+00:00",
+          "updatedAt": "2026-03-13T14:01:25.420644+00:00",
+          "runs": [
+            {
+              "id": "504xwbouog2geu",
+              "dataSourceId": "6gcs0wcmaotk0m",
+              "type": "SCHEDULED",
+              "status": "RUNNING",
+              "createdAt": "2026-03-13T14:01:25.312334+00:00",
+              "updatedAt": "2026-03-13T14:01:25.312334+00:00",
+              "startedAt": "2026-03-13T14:01:25.255977+00:00"
+            },
+            {
+              "id": "amc4nqbql1r1na",
+              "dataSourceId": "6gcs0wcmaotk0m",
+              "type": "SCHEDULED",
+              "status": "RUNNING",
+              "createdAt": "2026-03-12T14:01:25.304509+00:00",
+              "updatedAt": "2026-03-12T14:01:25.304509+00:00",
+              "startedAt": "2026-03-12T14:01:25.260423+00:00"
+            },
+            {
+              "id": "3l048awok8qot2",
+              "dataSourceId": "6gcs0wcmaotk0m",
+              "type": "SCHEDULED",
+              "status": "RUNNING",
+              "createdAt": "2026-03-11T14:01:25.244967+00:00",
+              "updatedAt": "2026-03-11T14:01:25.244967+00:00",
+              "startedAt": "2026-03-11T14:01:25.209535+00:00"
+            },
+            {
+              "id": "bfbnv8mtorkqvq",
+              "dataSourceId": "6gcs0wcmaotk0m",
+              "type": "SCHEDULED",
+              "status": "RUNNING",
+              "createdAt": "2026-03-10T14:01:25.296181+00:00",
+              "updatedAt": "2026-03-10T14:01:25.296181+00:00",
+              "startedAt": "2026-03-10T14:01:25.243829+00:00"
+            },
+            {
+              "id": "d3rph8ajjtd8ye",
+              "dataSourceId": "6gcs0wcmaotk0m",
+              "type": "SCHEDULED",
+              "status": "RUNNING",
+              "createdAt": "2026-03-09T14:01:25.293841+00:00",
+              "updatedAt": "2026-03-09T14:01:25.293841+00:00",
+              "startedAt": "2026-03-09T14:01:25.249270+00:00"
+            }
+          ]
+        }
+      ],
+      "asset_types": [],
+      "assets": [],
+      "data_products": [
+        {
+          "assetListing": {
+            "listingId": "c4rohp4dsijp5i",
+            "listingRevision": "2",
+            "name": "mattj_data",
+            "entityId": "4tfcu3s67yccnq",
+            "entityRevision": "1",
+            "entityType": "RedshiftTableAssetType",
+            "createdAt": "2026-03-08T13:35:05.399000+00:00",
+            "listingCreatedBy": "641aa274-7e1c-48c4-9635-594a91fdddb8",
+            "listingUpdatedBy": "641aa274-7e1c-48c4-9635-594a91fdddb8",
+            "glossaryTerms": [],
+            "governedGlossaryTerms": [],
+            "owningProjectId": "b6s0y31ngtn7o6"
+          }
+        }
+      ],
+      "form_types": [],
+      "glossaries": [],
+      "environments": [],
+      "subscriptions_as_provider": {
+        "subscriptions": [],
+        "subscription_requests": [],
+        "subscription_grants": []
+      },
+      "subscriptions_as_subscriber": {
+        "_note": "API does not support filtering by subscriber project"
+      }
+    }
+  ]
+}
