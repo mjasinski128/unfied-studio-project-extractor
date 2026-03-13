@@ -136,7 +136,9 @@ def get_data_sources(client, domain_id, project_id):
     for s in sources:
         ds_id = s.get("dataSourceId") or s.get("id")
         detail = get_data_source(client, domain_id, ds_id)
-        detail["runs"] = list_data_source_runs(client, domain_id, ds_id)
+        runs = list_data_source_runs(client, domain_id, ds_id)
+        detail["runs_number"] = len(runs)
+        detail["runs_last"] = runs[0] if runs else None
         result.append(detail)
     return result
 
