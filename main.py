@@ -213,8 +213,14 @@ def search_assets(client, domain_id, project_id):
     while True:
         response = safe_call(client.search, **kwargs)
         if "_error" in response:
+            log.warning("  search_assets [%s] failed: %s", project_id, response["_error"])
             break
-        items.extend(response.get("items", []))
+        page_items = response.get("items", [])
+        log.info("  search_assets [%s] page: %d hits (total so far: %d)",
+                 project_id, len(page_items), len(items) + len(page_items))
+        if page_items:
+            log.debug("  search_assets first hit keys: %s", list(page_items[0].keys()))
+        items.extend(page_items)
         token = response.get("nextToken")
         if not token:
             break
@@ -263,11 +269,14 @@ def extract_listing_id(asset_detail):
 def get_assets(client, domain_id, project_id):
     log.info("  [%s] assets", project_id)
     hits = search_assets(client, domain_id, project_id)
+    log.info("  [%s] %d asset search hits to enrich", project_id, len(hits))
     result = []
     for h in hits:
         item = h.get("assetItem", {})
         asset_id = item.get("itemId") or item.get("identifier")
         if not asset_id:
+            log.warning("  could not extract asset_id from hit keys=%s assetItem keys=%s",
+                        list(h.keys()), list(item.keys()))
             result.append(h)
             continue
         detail = get_asset(client, domain_id, asset_id)
