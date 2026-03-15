@@ -107,6 +107,17 @@ def get_project(client, domain_id, project_id):
                      identifier=project_id)
 
 
+def list_project_memberships(client, domain_id, project_id):
+    return all_pages(client.list_project_memberships, "members",
+                     domainIdentifier=domain_id,
+                     projectIdentifier=project_id)
+
+
+def get_project_members(client, domain_id, project_id):
+    log.info("  [%s] project members", project_id)
+    return list_project_memberships(client, domain_id, project_id)
+
+
 # ---------------------------------------------------------------------------
 # Data Sources
 # ---------------------------------------------------------------------------
@@ -616,6 +627,7 @@ def extract_project(client, domain_id, project_id):
     """
     log.info("Extracting project %s", project_id)
     project = get_project(client, domain_id, project_id)
+    project["members"] = get_project_members(client, domain_id, project_id)
     project["data_sources"] = get_data_sources(client, domain_id, project_id)
     project["asset_types"] = get_asset_types(client, domain_id, project_id)
     project["assets"] = get_assets(client, domain_id, project_id)
